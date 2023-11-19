@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimum Date Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+  <script>
+    function minDate(dates) {
+      // Ensure the input array is not empty
+      if (dates.length === 0) {
+        return null; // You can customize the behavior for an empty array
+      }
+
+      // Convert date strings to Date objects for comparison
+      const dateObjects = dates.map(dateStr => new Date(dateStr));
+
+      // Find the minimum date
+      const minDate = new Date(Math.min(...dateObjects));
+
+      // Format the minimum date as "YYYY/MM/DD"
+      const formattedMinDate = `${minDate.getFullYear()}/${(minDate.getMonth() + 1).toString().padStart(2, '0')}/${minDate.getDate().toString().padStart(2, '0')}`;
+
+      return formattedMinDate;
+    }
+
+    // Examples
+    const result1 = minDate(["2023/03/01", "2023/03/02", "2023/03/03"]);
+    console.log(result1); // Output: "2023/03/01"
+
+    const result2 = minDate(["2023/01/01", "2023/02/02", "2022/12/31"]);
+    console.log(result2); // Output: "2022/12/31"
+  </script>
 
 </body>
-
 </html>
